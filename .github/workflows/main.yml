@@ -1,0 +1,88 @@
+name: Correcting Computer Vision
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  milestones:
+    runs-on: ubuntu-latest
+    env:
+      USER_ID: ${{ secrets.USER_ID }}
+      API_TOKEN: ${{ secrets.API_TOKEN }}
+      API_ROOT: ${{ secrets.API_ROOT }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2.3.1
+
+      - name: Download the marking package
+        run: |
+          python -m pip install --upgrade pip
+          pip install computer-vision-marking-aicore
+
+
+      - name: Tick off boxes in milestone 1
+        id: tick-off-milestone-1
+        run: |
+          python -m computer_vision_test.verify_milestone1
+        if: always()
+      
+      - name: Verify milestone 2 tasks
+        run: |
+          python -m unittest -v computer_vision_test.test_milestone2 2> milestone_2.txt
+
+      - name: Tick off boxes in milestone 2
+        run: |
+          python -m computer_vision_test.verify_milestone2
+        if: always() # If milestone 2 didn't run, it will untick all tasks from that milestone
+
+      - name: Verify milestone 3 tasks
+        run: |
+          python -m unittest -v computer_vision_test.test_milestone3 2> milestone_3.txt
+
+      - name: Tick off boxes in milestone 3
+        run: |
+          python -m computer_vision_test.verify_milestone3
+        if: always() # If milestone 3 didn't run, it will untick all tasks from that milestone
+
+      - name: Verify milestone 4 tasks - Part 1
+        run: |
+          python -m unittest -v computer_vision_test.test_milestone4_p1 2> milestone_4_p1.txt
+
+      - name: Tick off boxes in milestone 4 - Part 1
+        run: |
+          python -m computer_vision_test.verify_milestone4_p1
+        if: always()
+
+      - name: Verify milestone 4 tasks - Part 2
+        run: |
+          python -m unittest -v computer_vision_test.test_milestone4_p2 2> milestone_4_p2.txt
+
+      - name: Tick off boxes in milestone 4 - Part 2
+        run: |
+          python -m computer_vision_test.verify_milestone4_p2
+        if: always()
+
+      - name: Verify milestone 5 tasks - Part 1
+        run: |
+          python -m unittest -v computer_vision_test.test_milestone5_p1 2> milestone_5_p1.txt
+
+      - name: Tick off boxes in milestone 5 - Part 1
+        run: |
+          python -m computer_vision_test.verify_milestone5_p1
+        if: always()
+      
+      - name: Verify milestone 5 tasks - Part 2
+        run: |
+          python -m unittest -v computer_vision_test.test_milestone5_p2 2> milestone_5_p2.txt
+
+      - name: Tick off boxes in milestone 5 - Part 2
+        run: |
+          python -m computer_vision_test.verify_milestone5_p2
+        if: always()

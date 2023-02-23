@@ -10,4 +10,4 @@
     * Learning Rate: 0.001
 * Exports model filename: keras_model.h5 which contains a structure and the parameters of deep learning model.
 * Model will be used in a future project for game called Rock Paper Scissors where the user will be able to show his choice to the camera.
-* Python Programming Language will be used in this project
+* Python Programming Language will be used in this projects

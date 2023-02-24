@@ -4,7 +4,7 @@ def get_computer_choice():
     print(computer_choice)
     return computer_choice
 
-def get_user_choice():
+def get_prediction():
     import cv2
     from keras.models import load_model
     import numpy as np
@@ -51,6 +51,6 @@ def get_winner(computer_choice , user_choice):
         return print("You won!")
 
 def play():
-    get_winner(get_computer_choice(),get_user_choice())
+    get_winner(get_computer_choice(),get_prediction())
 
 play()

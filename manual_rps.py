@@ -9,15 +9,15 @@ def get_user_choice():
 
 def get_winner(computer_choice , user_choice):
     if computer_choice == user_choice:
-        return "It is a tie!"
+        return print("It is a tie!")
     elif computer_choice == "Rock" and user_choice == "Scissors":
-        return "You Lost"
+        return print("You Lost")
     elif computer_choice == "Paper" and user_choice == "Rock":
-        return "You Lost"    
+        return print("You Lost")    
     elif computer_choice == "Scissors" and user_choice == "Paper":
-        return "You Lost"   
+        return print("You Lost")   
     else: 
-        return "You won!"
+        return print("You won!")
 
 print(get_winner(get_computer_choice() , get_user_choice()))
 

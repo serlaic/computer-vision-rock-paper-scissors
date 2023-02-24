@@ -8,6 +8,5 @@ def get_user_choice():
     user_choice = input('Choose Paper, Scissors or Rock')
     return user_choice
 
-print(get_computer_choice())
-print(get_user_choice())
+
 

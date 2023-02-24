@@ -11,11 +11,11 @@ def get_winner(computer_choice , user_choice):
     if computer_choice == user_choice:
         return print("It is a tie!")
     elif computer_choice == "Rock" and user_choice == "Scissors":
-        return print("You Lost")
+        return print("You lost")
     elif computer_choice == "Paper" and user_choice == "Rock":
-        return print("You Lost")    
+        return print("You lost")    
     elif computer_choice == "Scissors" and user_choice == "Paper":
-        return print("You Lost")   
+        return print("You lost")   
     else: 
         return print("You won!")
 

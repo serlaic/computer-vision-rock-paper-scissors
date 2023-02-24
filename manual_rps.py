@@ -9,21 +9,22 @@ def get_user_choice():
 
 def get_winner(computer_choice , user_choice):
     if computer_choice == user_choice:
-        return print("It is a tie!")
+        return "It is a tie!"
     elif computer_choice == "Paper" and user_choice == "Rock":
-        return print("You Lost")
+        return "You Lost"
     elif computer_choice == "Rock" and user_choice == "Scissors":
-        return print("You Lost.")    
+        return "You Lost"    
     elif computer_choice == "Scissors" and user_choice == "Paper":
-        return print("You Lost.")    
+        return "You Lost"   
     elif user_choice == "Paper" and computer_choice == "Rock":
-        return print("You won!")   
+        return "You won!"  
     elif user_choice == "Rock" and computer_choice == "Scissors":
-        return print("You won!.")       
+        return "You won!"       
     elif user_choice == "Scissors" and computer_choice == "Paper":
-        return print("You won!")
+        return "You won!"
 
-get_winner(computer_choice = get_computer_choice(), user_choice = get_user_choice())
+print(get_winner(get_computer_choice() , get_user_choice()))
+
 
 
 

@@ -15,12 +15,16 @@ def get_winner(computer_choice , user_choice):
     elif computer_choice == "Paper" and user_choice == "Rock":
         return print("You lost")    
     elif computer_choice == "Scissors" and user_choice == "Paper":
-        return print("You lost")   
+        return print("You lost")  
     else: 
         return print("You won!")
 
-print(get_winner(get_computer_choice() , get_user_choice()))
+def play():
+    get_winner(get_computer_choice(),get_user_choice())
 
+play()
+
+    
 
 
 

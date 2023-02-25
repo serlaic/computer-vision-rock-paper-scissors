@@ -86,7 +86,7 @@ def get_winner(computer_choice , user_choice):
     '''
     This function is used to decide who is a winner between the player and computer
 
-    Returns the message depending on the computer_choice or user_choice
+    Returns the print function with a string inside depending on the computer_choice or user_choice
 
     Arguments:
     -----------
@@ -128,7 +128,7 @@ computer_wins = 0
 while user_wins < 4 or computer_wins < 4:
         print("User Wins:" , user_wins)
         print("Computer Wins:" , computer_wins) 
-        if user_wins == 3 or computer_wins == 3:
+        if user_wins == 1 or computer_wins == 1:
             break
         else:
             play()       

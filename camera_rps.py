@@ -27,8 +27,7 @@ def get_prediction():
         user_choice = np.argmax(prediction)
 # Press q to close the window
         if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-        print(time.time())  
+            break 
     if user_choice == 0:
         print("Rock")
         return "Rock"
@@ -37,26 +36,43 @@ def get_prediction():
         return "Paper"
     elif user_choice == 2:
         print("Scissors")
-        return "Scissors"          
+        return "Scissors" 
+    elif user_choice == 3:
+        print("Nothing chosen. Try again")
+        get_prediction()         
 # After the loop release the cap object
-    print(user_choice)
     cap.release()
 # Destroy all the windows
     cv2.destroyAllWindows()
 
 def get_winner(computer_choice , user_choice):
+    global computer_wins
+    global user_wins
     if computer_choice == user_choice:
         return print("It is a tie!")
     elif computer_choice == "Rock" and user_choice == "Scissors":
+        computer_wins += 1
         return print("You lost")
     elif computer_choice == "Paper" and user_choice == "Rock":
-        return print("You lost")    
+        computer_wins += 1
+        return print("You lost") 
     elif computer_choice == "Scissors" and user_choice == "Paper":
+        computer_wins += 1
         return print("You lost")  
-    else: 
-        return print("You won!")
+    else:   
+        user_wins += 1 
+        return print("You won!")    
 
 def play():
     get_winner(get_computer_choice(),get_prediction())
 
-play()
+user_wins = 0
+computer_wins = 0
+while user_wins < 4 or computer_wins < 4:
+        print("User Wins:" , user_wins)
+        print("Computer Wins:" , computer_wins) 
+        if user_wins == 3 or computer_wins == 3:
+            break
+        else:
+            play()       
+  

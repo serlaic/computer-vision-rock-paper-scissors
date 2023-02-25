@@ -4,7 +4,7 @@ def get_computer_choice():
 
     Parameters:
     ----------
-    computer_choice(string): Random computer choice
+        computer_choice(string): Random computer choice
     '''
     import random as rd
     computer_choice = rd.choice(["Rock" , "Paper", "Scissors"])
@@ -16,6 +16,7 @@ def get_prediction():
     This function is used to capture an image from the user
 
     Returns string "Rock","Paper,"Stone" depending on the last image captured upon the 10 second timer expiration
+
     Imports:
     --------
 
@@ -115,7 +116,7 @@ def get_winner(computer_choice , user_choice):
         user_wins += 1 
         return print("You won!")    
 
-def play()
+def play():
     '''
     This function calls get_winner function with 2 arguments which are returns from get_computer_choice and get_prediction functions
     '''

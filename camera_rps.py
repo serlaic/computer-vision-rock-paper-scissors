@@ -128,7 +128,7 @@ computer_wins = 0
 while user_wins < 4 or computer_wins < 4:
         print("User Wins:" , user_wins)
         print("Computer Wins:" , computer_wins) 
-        if user_wins == 1 or computer_wins == 1:
+        if user_wins == 3 or computer_wins == 3:
             break
         else:
             play()       

@@ -46,10 +46,9 @@ def get_prediction():
     model = load_model('keras_model.h5')
     cap = cv2.VideoCapture(0)
     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+# Sets the timer in seconds
     TIMER = int(5)
     while True and TIMER >= 0:
-# Starts the timer
-# Breaks the while loop when timer reaches 10 seconds
         ret, frame = cap.read()
 
 # Display countdown on each frame specify the font and draw the countdown using puttext

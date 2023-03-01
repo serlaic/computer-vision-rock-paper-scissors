@@ -46,23 +46,40 @@ def get_prediction():
     model = load_model('keras_model.h5')
     cap = cv2.VideoCapture(0)
     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
-    while True:
+    TIMER = int(5)
+    while True and TIMER >= 0:
 # Starts the timer
-        timer = time.time() - start_time
 # Breaks the while loop when timer reaches 10 seconds
-        if timer > 10:
-            break
         ret, frame = cap.read()
+
+# Display countdown on each frame specify the font and draw the countdown using puttext
+        font = cv2.FONT_HERSHEY_COMPLEX
+        cv2.putText(frame, str(TIMER),
+                    (200,250), font,
+                    7, (0, 255, 255),
+                      10, cv2.LINE_AA)
+
+# Current time
+        current_time = time.time()
+
+# Update and keep track of Countdown if time elapsed is one second then decrease the counter        
+        if current_time - start_time >= 1:
+            start_time = current_time
+            TIMER = TIMER - 1
+
+# Camera prediction
         resized_frame = cv2.resize(frame, (224, 224), interpolation = cv2.INTER_AREA)
         image_np = np.array(resized_frame)
         normalized_image = (image_np.astype(np.float32) / 127.0) - 1 # Normalize the image
         data[0] = normalized_image
         prediction = model.predict(data)
         cv2.imshow('frame', frame)
-        user_choice = np.argmax(prediction)
+        user_choice = np.argmax(prediction) #returns the maximum argument on the axis
+
 # Press q to close the window
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
+
 # Returns Rock, Paper or Scissors strings depending on the user_choice output
     if user_choice == 0:
         print("Rock")
@@ -74,12 +91,16 @@ def get_prediction():
         print("Scissors")
         return "Scissors" 
     elif user_choice == 3:
+
 # Repeats the function get_prediction to get the prediction again if user didn't show anything 
         print("Nothing chosen. Try again")
-        get_prediction()         
+        get_prediction()    
+
 # After the loop release the cap object
     cap.release()
+
 # Destroy all the windows
+
     cv2.destroyAllWindows()
 
 def get_winner(computer_choice , user_choice):
@@ -100,6 +121,7 @@ def get_winner(computer_choice , user_choice):
     '''
     global computer_wins
     global user_wins
+
 # Statements to decide who is the winner between the computer and the player
     if computer_choice == user_choice:
         return print("It is a tie!")
@@ -125,11 +147,9 @@ def play():
 # While loop to play the game until player or computer has 3 wins in total
 user_wins = 0
 computer_wins = 0
-while user_wins < 4 or computer_wins < 4:
+while user_wins <= 2 and computer_wins <= 2:
+        play()
         print("User Wins:" , user_wins)
         print("Computer Wins:" , computer_wins) 
-        if user_wins == 3 or computer_wins == 3:
-            break
-        else:
-            play()       
+              
   

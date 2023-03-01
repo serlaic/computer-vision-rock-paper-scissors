@@ -33,7 +33,20 @@ it has three possible outcomes: a draw, a win or a loss. A player who decides to
 
 *manual_rps.py file contains the skript for the game without the computer vision system. I'ts a manual version of the game where computer choice is made randomly and user inputs the choice manually*
 
-* def_computer_choice makes a random choice for computer and returns computer_choice as computers choice
-* def_user_choice asks user to choose Rock, Paper or Scissors and returns user_choice as user choice
-* get_winner has computer_choice and user_choice as attributes. Function contains main arguments. Checks who is a winner in a game and returns the string: 'I'ts a tie', 'You won!' or 'You lost' respectively.
+* def_computer_choice function makes a random choice for computer and returns computer_choice as computers choice
+* def_user_choice function asks user to choose Rock, Paper or Scissors and returns user_choice as user choice
+* get_winner function has computer_choice and user_choice as attributes. Function contains main arguments. Checks who is a winner in a game and returns the string: 'I'ts a tie', 'You won!' or 'You lost' respectively.
 * play function calls all the functions above 
+
+### Rock Paper Scissors game using model learned and captured in a file keras_model.h5
+
+* def_computer_choice function makes a random choice for computer and returns computer_choice as computer_choice
+* def_prediction function uses keras_model.h5 learned model to campture an image from a player and return a string if user is showin Rock, Paper or Scissors. If player shows nothing then preductions are made again. There is 10 seconds timer for each try.
+* get_winner function has computer_choice and user_choice as attributes. Function contains main arguments. Checks who is a winner in a game and returns the string: 'I'ts a tie', 'You won!' or 'You lost' respectively. Depending on how many times player or computer won counts amount of wins for both.
+* Loops the game until computer or player has 3 wins in total
+
+Testing Examples with terminal returns:
+
+![Paper](Paper.png)
+![Rock](Rock.png)
+![Scissors](Scissors.png)

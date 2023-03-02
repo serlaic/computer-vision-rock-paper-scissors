@@ -54,7 +54,7 @@ def get_prediction():
 # Display countdown on each frame specify the font and draw the countdown using puttext
         font = cv2.FONT_HERSHEY_COMPLEX
         cv2.putText(frame, str(TIMER),
-                    (200,250), font,
+                    (200 , 250) , font,
                     7, (0, 255, 255),
                       10, cv2.LINE_AA)
 
@@ -89,10 +89,8 @@ def get_prediction():
     elif user_choice == 2:
         print("Scissors")
         return "Scissors" 
-    elif user_choice == 3:
-
-# Repeats the function get_prediction to get the prediction again if user didn't show anything 
-        print("Nothing chosen. Try again")
+    elif user_choice == 3:                                    
+        print("Nothing chosen. Try again") # Repeats the function get_prediction to get the prediction again if user didn't show anything 
         get_prediction()    
 
 # After the loop release the cap object
@@ -149,6 +147,10 @@ computer_wins = 0
 while user_wins <= 2 and computer_wins <= 2:
         play()
         print("User Wins:" , user_wins)
-        print("Computer Wins:" , computer_wins) 
+        print("Computer Wins:" , computer_wins)
+        if user_wins == 3:
+            print("You WON!")
+        elif computer_wins == 3:
+            print("Computer WON.")
               
   
